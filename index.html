@@ -1,36 +1,18 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <h1>Todo list</h1>
-  <div>
-    <div id="todo-1">
-      <h4>1. Take class</h4>
-      <button onclick="deleteTodo(1)">delete</button>
-    </div>
-    <div id="todo-2">
-      <h4>2. Go out to eat</h4>
-      <button onclick="deleteTodo(2)">delete</button>
-    </div>
-  </div>
-  <div>
-    <input type="text"></input>
-    <button>Add Todo</button>
+  <div class="container">
+    <h1>What to do?</h1>
+    <div id ="parentList"></div>
+    <input type="text" placeholder="Add to-do">
+    <button class="addbtn"onclick="addToDo()">Add</button>
   </div>
 </body>
-
-<script>
-  function deleteTodo(index) {
-    const element = document.getElementById("todo-" + index);
-    element.parentNode.removeChild(element);
-  }
-</script>
-
+<script src="script.js"></script>
 </html>
