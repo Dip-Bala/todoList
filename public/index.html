@@ -12,18 +12,21 @@
     <button onclick="showSignup()">New User</button>
     <button onclick="showSignin()">Already Registered</button>
   </div> -->
+  <div>
   <form id="signupForm">
+    <h2>Sign Up here</h2>
     <input type="email" id="signup-email" placeholder="Email" required />
     <input type="password" id="signup-password" placeholder="Password" required />
     <input type="name" id="signup-name" placeholder="Name" required />
     <button id="signupBtn" type="submit">Sign Up</button>
   </form>
   <form id="signinForm" >
+    <h2>Already Signed Up? Sign In here</h2>
     <input type="email" id="signin-email" placeholder="Email" required />
     <input type="password" id="signin-password" placeholder="Password" required />
     <button id="signupBtn" type="submit">Signin In</button>
   </form>
-
+</div>
 </body>
 <script src="./script.js"></script>
 </html>

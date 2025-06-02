@@ -36,27 +36,6 @@ document.getElementById("addbtn").addEventListener('click', async function (e) {
     }
 })
 fetchTodos()
-// function addToDo(){
-//     todos.push({
-//        title : document.querySelector("input").value
-//     });
-//     render();
-//     console.log(todos)
-// }
-// document.getElementByClassName("deletebtn").addEventListener('click', async function (e) {
-//     e.preventDefault();
-//     const description = document.getElementById("todo-description").value;
-//     await axios.delete("http://localhost:3000/delete-todo",
-//         {
-//             headers: {
-//                 token: localStorage.getItem("token")
-//             },
-//             params: {
-//                 description: description
-//               }
-//         })
-//     render();
-// })
 
 function createToDoComponent(todo, index) {
     const div = document.createElement("div");
@@ -96,3 +75,8 @@ function render() {
         document.querySelector("#parentList").appendChild(div);
     })
 }
+
+document.getElementById("logout").addEventListener('click', async function(){
+    localStorage.removeItem('token');
+    window.location.href = "/index.html";
+})

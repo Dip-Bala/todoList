@@ -124,14 +124,18 @@ app.get("/todo.html", (req, res) => {
 app.post("/todo", auth, async(req, res) => {
     const userId = req.userId;
     const description = req.body.description;
-    
-    await TodoModel.create({
-        userId,
-        description
-    })
-    res.json({
-        "message" : "done"
-    })
+    if(description){
+        await TodoModel.create({
+            userId,
+            description
+        })
+        res.json({
+            "message" : "done"
+        })
+
+    }else{
+        res.status(403).send("Can not add black task")
+    }
 })
 
 app.get("/todos", auth, async(req, res) => {
@@ -144,19 +148,19 @@ app.get("/todos", auth, async(req, res) => {
 })
 
 app.delete("/delete-todo", auth, async (req, res) => {
-    const userId = req.userId;
-    const description = req.query.description; // safer to send via query in DELETE
-  
-    try {
-      const result = await TodoModel.deleteOne({ description: description, userId: userId });
-      if (result.deletedCount === 0) {
-        return res.status(404).send("Todo not found or unauthorized");
-      }
-      res.status(200).send("Delete Successful");
-    } catch (e) {
-      res.status(500).send("Server error");
+  const userId = req.userId;
+  const description = req.query.description; // safer to send via query in DELETE
+
+  try {
+    const result = await TodoModel.deleteOne({ description: description, userId: userId });
+    if (result.deletedCount === 0) {
+      return res.status(404).send("Todo not found or unauthorized");
     }
-  });
-  
+    res.status(200).send("Delete Successful");
+  } catch (e) {
+    res.status(500).send("Server error");
+  }
+});
+
 
 app.listen(3000)
